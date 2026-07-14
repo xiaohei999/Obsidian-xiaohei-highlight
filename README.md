@@ -10,3 +10,8 @@ Highlight the text, will not destroy the original text, and track the annotation
 Download the "mark" folder to the obsidian plug-ins directory
 
 下载"mark"文件夹到obsidian插件目录
+
+
+Thanks to： 
+
+WorkBuddy tool, alx linght teacher plug-in ideas, and ten episodes of Pi teacher plug-in ideas
