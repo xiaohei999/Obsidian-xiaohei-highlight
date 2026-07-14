@@ -1,0 +1,11 @@
+{
+  "name": "text-highlight-marker",
+  "version": "1.3.0",
+  "description": "Obsidian 高亮批注插件（CM6 装饰层，不污染原文）",
+  "scripts": {
+    "build": "esbuild src/main.js --bundle --format=cjs --platform=node --external:obsidian --external:@codemirror/state --external:@codemirror/view --outfile=main.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.21.5"
+  }
+}

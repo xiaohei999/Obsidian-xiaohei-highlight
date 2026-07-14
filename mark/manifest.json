@@ -1,0 +1,9 @@
+{
+  "id": "text-highlight-marker",
+  "name": "peko标注",
+  "version": "1.2.0",
+  "minAppVersion": "1.4.0",
+  "description": "高亮无污染，支持悬浮提示、批注编辑，导出。感谢WorkBuddy工具，alx linght老师插件思路，十集皮老师插件思路",
+  "author": "peko",
+  "isDesktopOnly": false
+}

@@ -1,0 +1,483 @@
+/* ===================== 高亮基础样式 ===================== */
+.cm-line .highlight-marker,
+.markdown-preview-view .highlight-marker,
+.highlight-marker {
+  cursor: pointer;
+  transition: filter 0.12s ease;
+}
+.highlight-marker:hover {
+  filter: brightness(0.92);
+}
+
+/* ===================== 悬浮提示卡片 ===================== */
+.highlight-tooltip {
+  position: fixed;
+  z-index: 10000;
+  max-width: var(--thm-tip-maxw, 340px);
+  min-width: var(--thm-tip-minw, 240px);
+  background: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  padding: 0;
+  overflow: hidden;
+  pointer-events: auto;
+  font-family: var(--font-ui);
+  font-size: var(--font-ui-small);
+  color: var(--text-normal);
+  animation: highlight-tooltip-in 0.12s ease-out;
+}
+@keyframes highlight-tooltip-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.highlight-tooltip__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+}
+/* 标题栏可拖动 */
+.highlight-tooltip__header--draggable {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.highlight-tooltip--dragging .highlight-tooltip__header--draggable {
+  cursor: grabbing;
+}
+.highlight-tooltip--dragging {
+  user-select: none;
+  -webkit-user-select: none;
+}
+.highlight-tooltip__swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+.highlight-tooltip__title {
+  flex: 1 1 auto;
+  font-weight: 600;
+  color: var(--text-normal);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.highlight-tooltip__close {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.highlight-tooltip__close:hover {
+  background: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+.highlight-tooltip__body {
+  padding: 10px;
+}
+.highlight-tooltip__text {
+  margin: 0 0 10px 0;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: var(--background-secondary);
+  border-left: 3px solid var(--interactive-accent);
+  color: var(--text-normal);
+  font-size: var(--font-ui-small);
+  line-height: 1.5;
+  max-height: 120px;
+  overflow: auto;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+.highlight-tooltip__note-label {
+  font-size: var(--font-ui-smaller);
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.highlight-tooltip__note {
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 56px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-primary);
+  color: var(--text-normal);
+  font-family: var(--font-ui);
+  font-size: var(--thm-note-font-size, var(--font-ui-small));
+  line-height: 1.5;
+}
+.highlight-tooltip__note:focus {
+  border-color: var(--interactive-accent);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--background-modifier-border);
+}
+.highlight-tooltip__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-top: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+}
+.highlight-tooltip__hint {
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+}
+.highlight-tooltip__remove {
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-primary);
+  color: var(--text-normal);
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: var(--font-ui-smaller);
+  transition: all 0.15s ease;
+}
+.highlight-tooltip__remove:hover {
+  background: var(--background-modifier-error);
+  color: var(--text-on-accent);
+  border-color: var(--background-modifier-error);
+}
+
+/* ===================== 右侧批注面板 ===================== */
+.thm-panel {
+  padding: 0;
+}
+.thm-panel-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  position: sticky;
+  top: 0;
+  background: var(--background-primary);
+  z-index: 2;
+}
+.thm-panel-title {
+  margin: 0;
+  flex: 1 1 auto;
+  font-size: var(--font-ui-large);
+}
+.thm-panel-meta {
+  flex-basis: 100%;
+  font-size: var(--font-ui-smaller);
+  color: var(--text-muted);
+}
+.thm-panel-export {
+  border: 1px solid var(--interactive-accent);
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: var(--font-ui-small);
+}
+.thm-panel-export:hover {
+  filter: brightness(1.05);
+}
+.thm-panel-empty {
+  padding: 18px 14px;
+  color: var(--text-muted);
+  font-size: var(--font-ui-small);
+  line-height: 1.6;
+}
+.thm-panel-list {
+  padding: 10px 12px 24px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.thm-panel-item {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  padding: 10px;
+  background: var(--background-secondary);
+}
+.thm-panel-item-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.thm-panel-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-top: 4px;
+  flex: 0 0 auto;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+.thm-panel-item-title {
+  flex: 1 1 auto;
+  font-weight: 600;
+  font-size: var(--font-ui-small);
+  line-height: 1.5;
+  cursor: pointer;
+  color: var(--text-normal);
+  word-break: break-word;
+}
+.thm-panel-item-title:hover {
+  color: var(--interactive-accent);
+  text-decoration: underline;
+}
+.thm-panel-del {
+  flex: 0 0 auto;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-primary);
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: var(--font-ui-smaller);
+}
+.thm-panel-del:hover {
+  background: var(--background-modifier-error);
+  color: var(--text-on-accent);
+  border-color: var(--background-modifier-error);
+}
+.thm-panel-note {
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 52px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-primary);
+  color: var(--text-normal);
+  font-family: var(--font-ui);
+  font-size: var(--font-ui-small);
+  line-height: 1.5;
+}
+.thm-panel-note:focus {
+  border-color: var(--interactive-accent);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--background-modifier-border);
+}
+
+/* ===================== 右侧边栏图标按钮 ===================== */
+.thm-right-btn {
+  cursor: pointer;
+}
+
+/* 右栏容器始终不可用时，固定在视口右下角的兜底按钮（仍在右侧） */
+.thm-floating-btn {
+  position: fixed;
+  right: 16px;
+  bottom: 18px;
+  z-index: 9000;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  transition: transform 0.12s ease, filter 0.12s ease;
+}
+.thm-floating-btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+/* ===================== 选中即出「高亮」按钮 ===================== */
+.thm-sel-btn {
+  position: fixed;
+  z-index: 10001;
+  display: none;
+  padding: 2px 10px;
+  border-radius: 6px;
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  font-family: var(--font-ui);
+  font-size: var(--font-ui-small);
+  font-weight: 600;
+  line-height: 1.6;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  user-select: none;
+  animation: thm-sel-in 0.1s ease-out;
+}
+.thm-sel-btn:hover {
+  filter: brightness(1.08);
+}
+@keyframes thm-sel-in {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================== CM6 装饰层兜底（编辑模式） ===================== */
+.cm-line .highlight-marker {
+  border-radius: 3px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* ===================== 面板搜索框 ===================== */
+.thm-panel-search {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  background: var(--background-primary);
+}
+.thm-panel-search-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  padding: 6px 9px;
+  color: var(--text-normal);
+  font-family: var(--font-ui);
+  font-size: var(--font-ui-small);
+  outline: none;
+}
+.thm-panel-search-input:focus {
+  border-color: var(--interactive-accent);
+}
+
+/* 搜索命中的关键词高亮 */
+.thm-hl-match {
+  background: rgba(255, 196, 0, 0.5);
+  color: var(--text-normal);
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+/* 批注命中搜索词时的只读高亮预览 */
+.thm-panel-note-hl {
+  margin-top: 6px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+  font-size: var(--font-ui-small);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ===================== 悬浮窗：颜色选择器 + 缩小按钮 ===================== */
+.highlight-tooltip__colors {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.highlight-tooltip__color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+  transition: transform 0.1s ease;
+}
+.highlight-tooltip__color:hover {
+  transform: scale(1.12);
+}
+.highlight-tooltip__color.is-active {
+  border-color: var(--text-normal);
+}
+.highlight-tooltip__remove--sm {
+  margin-left: auto;
+  padding: 2px 9px;
+  font-size: var(--font-ui-smaller);
+}
+
+/* 阅读模式：只读批注展示 */
+.highlight-tooltip--readonly .highlight-tooltip__header {
+  background: var(--background-secondary);
+}
+.highlight-tooltip__note-readonly {
+  margin: 0;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: var(--background-secondary);
+  border-left: 3px solid var(--interactive-accent);
+  color: var(--text-normal);
+  font-size: var(--thm-note-font-size, var(--font-ui-small));
+  line-height: 1.6;
+  max-height: 220px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ===================== 面板：跨文档分组 ===================== */
+.thm-panel-search-hint {
+  margin: 6px 2px 0;
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+}
+.thm-panel-group {
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+.thm-panel-group:last-child {
+  border-bottom: none;
+}
+.thm-panel-group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 8px 12px 4px;
+  background: var(--background-secondary);
+  position: sticky;
+  top: 0;
+}
+.thm-panel-group-name {
+  flex: 1 1 auto;
+  font-weight: 600;
+  color: var(--text-normal);
+  font-size: var(--font-ui-small);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.thm-panel-group-count {
+  flex: 0 0 auto;
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+}
+.thm-panel-item-badge {
+  flex: 0 0 auto;
+  margin-left: 6px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: var(--background-modifier-border);
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+}

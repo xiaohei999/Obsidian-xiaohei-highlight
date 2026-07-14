@@ -1,0 +1,36 @@
+{
+  "colors": {
+    "blue": {
+      "name": "蓝色",
+      "color": "#4a90d9"
+    },
+    "red": {
+      "name": "红色",
+      "color": "#e0524d"
+    },
+    "green": {
+      "name": "绿色",
+      "color": "#3fa66a"
+    },
+    "yellow": {
+      "name": "黄色",
+      "color": "#e6c34a"
+    }
+  },
+  "opacity": 50,
+  "dataDir": "E:\\BaiduSyncdisk\\同步笔记",
+  "highlights": {
+    "ClipperMaster/欢迎使用 ClipperMaster for Obsidian.md": [
+      {
+        "id": "d8e824c6-3bb3-4c10-b34b-c39b5d9b2722",
+        "text": "中提取结构化数",
+        "start": 101,
+        "end": 108,
+        "color": "yellow",
+        "prefix": "大的 Chrome 浏览器扩展，能让你轻松从网页",
+        "suffix": "据，构建你的专属信息数据库。\n![|1097x3",
+        "note": "大声道"
+      }
+    ]
+  }
+}
