@@ -15,3 +15,6 @@ Download the "mark" folder to the obsidian plug-ins directory
 Thanks to： 
 
 WorkBuddy tool, "alx linght" teacher plug-in ideas, and "十集皮" teacher plug-in ideas
+
+
+![1](https://origin.picgo.net/2026/07/14/1c80df3b4e2085b89.png)
